@@ -1,0 +1,30 @@
+INCIDENT REPORT
+
+Plant: Rajahmundry Petrochemical Complex, Unit 3
+Department: HSE
+Prepared by: Engineer: Arvind Rao
+Date: 01/09/2026
+
+Equipment Involved: P-101 (Centrifugal Feed Pump)
+
+Incident Summary:
+A near miss occurred when a technician noticed unusual vibration and
+a burning smell near P-101 during a routine walk-down. The pump was
+immediately shut down before bearing seizure occurred.
+
+Failure Reason:
+Vibration was later attributed to bearing overheating consistent with
+the lubrication interval issue identified in prior maintenance findings.
+
+Lessons Learned:
+Vibration monitoring should not rely solely on scheduled walk-downs.
+Continuous online monitoring should be prioritized for critical rotating
+equipment such as P-101.
+
+Corrective Action:
+Installed a permanent vibration sensor on P-101. Updated the near-miss
+register and briefed the shift team.
+
+Regulatory Reference: OISD-118
+
+Location: Unit 3, Pump House B

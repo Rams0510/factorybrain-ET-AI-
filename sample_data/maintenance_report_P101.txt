@@ -1,0 +1,42 @@
+MAINTENANCE REPORT
+
+Plant: Rajahmundry Petrochemical Complex, Unit 3
+Department: Rotating Equipment Maintenance
+Prepared by: Engineer: Arvind Rao
+Date: 03/14/2026
+
+Equipment: P-101 (Centrifugal Feed Pump)
+
+Findings:
+During routine inspection, P-101 exhibited excessive vibration and a
+minor seal leakage at the mechanical seal housing. Discharge pressure
+readings were logged at 12.4 bar, above the design maximum of 10 bar.
+Bearing temperature was measured at 84 C, exceeding the safe operating
+threshold of 75 C.
+
+Failure Reason:
+Bearing overheating caused by inadequate lubrication schedule combined
+with elevated discharge pressure from a partially closed downstream
+valve (V-204). Seal leakage is a secondary effect of shaft misalignment
+induced by bearing wear.
+
+Root Cause:
+Lubrication interval was extended from monthly to bi-monthly six months
+ago as a cost-saving measure without a corresponding vibration-monitoring
+upgrade, allowing bearing degradation to go undetected.
+
+Action Taken:
+Replaced drive-end and non-drive-end bearings. Realigned pump-motor
+coupling to within 0.05mm TIR. Replaced mechanical seal. Restored
+lubrication interval to monthly and added a vibration sensor for
+continuous monitoring.
+
+Downtime: 14 hours
+
+Safety Note:
+Operators must not restart P-101 without confirming bearing temperature
+is below 75 C and vibration readings are within ISO 10816 Zone B limits.
+
+Regulatory Reference: OISD-118, ISO 10816
+
+Location: Unit 3, Pump House B

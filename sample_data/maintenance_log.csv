@@ -1,0 +1,6 @@
+equipment_tag,maintenance_date,engineer,failure_reason,action_taken,downtime_hours
+P-101,2025-08-12,Arvind Rao,Seal leakage,Replaced mechanical seal,6
+P-101,2026-03-14,Arvind Rao,Bearing overheating,Replaced bearings and realigned coupling,14
+V-204,2025-11-02,Meena Iyer,Actuator linkage play,Adjusted linkage,3
+TK-305,2025-06-18,S. Venkatesh,None - routine,Routine cleaning and inspection,8
+M-220,2025-09-30,Arvind Rao,Motor winding insulation degradation,Rewound motor,20

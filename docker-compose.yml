@@ -1,0 +1,154 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: factorybrain-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pw_change_me
+      MYSQL_DATABASE: factorybrain
+      MYSQL_USER: factorybrain
+      MYSQL_PASSWORD: factorybrain_pw
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_pw_change_me"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  neo4j:
+    image: neo4j:5.24-community
+    container_name: factorybrain-neo4j
+    restart: unless-stopped
+    environment:
+      NEO4J_AUTH: neo4j/factorybrain_pw
+      NEO4J_PLUGINS: '["apoc"]'
+    ports:
+      - "7474:7474"   # Neo4j Browser
+      - "7687:7687"   # Bolt protocol
+    volumes:
+      - neo4j_data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:7474"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  chromadb:
+    image: chromadb/chroma:0.5.5
+    container_name: factorybrain-chromadb
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "FALSE"
+
+  redis:
+    image: redis:7-alpine
+    container_name: factorybrain-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: factorybrain-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      MYSQL_HOST: mysql
+      NEO4J_URI: bolt://neo4j:7687
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: 8000
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_uploads:/app/storage/uploads
+      - ./backend/secrets:/app/secrets:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      chromadb:
+        condition: service_started
+      redis:
+        condition: service_healthy
+
+  # Handles the actual OCR/parsing/CV/embedding/graph work, pulled from
+  # the Redis queue. Scale this independently of the API by running more
+  # replicas (`docker-compose up --scale celery_worker=4`) when ingestion
+  # volume grows, without touching the request-serving backend at all.
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: factorybrain-celery-worker
+    restart: unless-stopped
+    command: celery -A app.celery_app worker --loglevel=info --concurrency=4
+    env_file:
+      - ./backend/.env
+    environment:
+      MYSQL_HOST: mysql
+      NEO4J_URI: bolt://neo4j:7687
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: 8000
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+    volumes:
+      - backend_uploads:/app/storage/uploads
+      - ./backend/secrets:/app/secrets:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      chromadb:
+        condition: service_started
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY}
+        VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN}
+        VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID}
+        VITE_FIREBASE_STORAGE_BUCKET: ${VITE_FIREBASE_STORAGE_BUCKET}
+        VITE_FIREBASE_MESSAGING_SENDER_ID: ${VITE_FIREBASE_MESSAGING_SENDER_ID}
+        VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID}
+    container_name: factorybrain-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+  neo4j_data:
+  chroma_data:
+  redis_data:
+  backend_uploads:

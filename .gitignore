@@ -1,0 +1,21 @@
+### Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+### Node
+node_modules/
+dist/
+.env.local
+
+### Secrets
+backend/secrets/*.json
+backend/storage/
+
+### OS
+.DS_Store
+
+### IDE
+.vscode/
+.idea/

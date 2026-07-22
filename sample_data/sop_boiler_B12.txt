@@ -1,0 +1,38 @@
+STANDARD OPERATING PROCEDURE (SOP)
+
+Title: SOP for Boiler B-12 Startup and Shutdown
+Department: Utilities
+Plant: Rajahmundry Petrochemical Complex, Unit 3
+Prepared by: Engineer: Meena Iyer
+Approved by: Supervisor: R. K. Sharma
+
+1. Purpose
+This SOP defines the mandatory steps for safe startup and shutdown of
+Boiler B-12 (water-tube, 45 TPH capacity).
+
+2. Pre-Startup Checks
+Operators must verify that all drain valves are closed and the feedwater
+level is between the low and high alarm setpoints. The safety valve set
+pressure must be confirmed at 17.5 bar before firing.
+
+3. Startup Sequence
+Operators shall purge the furnace for a minimum of 5 minutes before
+ignition. Steam drum pressure must be raised gradually, not exceeding
+2 bar per 10 minutes, to avoid thermal stress on the drum shell.
+
+4. Safety Requirements
+Operators must never bypass the low-water cutoff interlock under any
+circumstance. Personnel must wear appropriate PPE including insulated
+gloves near the burner front. Boiler B-12 shall be inspected annually
+per PESO regulations and Factory Act, 1948 requirements.
+
+5. Shutdown Sequence
+Reduce firing rate gradually. Maintain feedwater flow until drum
+pressure drops below 2 bar. Do not open manhole covers until drum
+temperature is below 60 C.
+
+6. Regulatory References
+This SOP complies with OISD-117, PESO CCE guidelines, and Factory Act,
+1948, Section 28 (steam boilers).
+
+Location: Utilities Block, Boiler House

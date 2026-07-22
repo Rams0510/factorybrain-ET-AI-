@@ -1,0 +1,28 @@
+INSPECTION REPORT
+
+Plant: Rajahmundry Petrochemical Complex, Unit 3
+Department: Quality & Safety Assurance
+Inspector: Inspector: S. Venkatesh
+Date: 02/20/2026
+
+Equipment Inspected: TK-305 (Storage Tank), V-204 (Control Valve)
+
+Finding: Observed that TK-305 external shell shows early-stage corrosion
+near the base weld seam, approximately 1.2 meters from the foundation.
+No active leakage was observed. Severity: medium.
+
+Finding: Observed that V-204 actuator linkage has minor play, causing
+inconsistent valve positioning under 8 bar line pressure. Severity: low.
+
+Compliance Check:
+TK-305 last hydro-tested 11 months ago; certificate valid per ISO 16961.
+Safety data sheet for stored fluid (Ethylene Glycol) is posted at the
+tank site as required.
+
+Recommendation:
+Schedule ultrasonic thickness testing on TK-305 base weld within 60 days.
+Replace V-204 actuator linkage bushing during next planned shutdown.
+
+Regulatory Reference: ISO 16961, OISD-118
+
+Location: Unit 3, Tank Farm North

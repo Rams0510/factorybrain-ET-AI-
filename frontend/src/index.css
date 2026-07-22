@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grid-line: rgba(148, 163, 184, 0.06);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+.card {
+  @apply bg-industrial-panel border border-industrial-border rounded-xl shadow-lg shadow-black/20;
+}
+
+.btn-primary {
+  @apply bg-industrial-accent text-industrial-bg font-semibold px-4 py-2 rounded-lg hover:brightness-110 transition;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-industrial-border text-slate-200 px-4 py-2 rounded-lg hover:bg-white/5 transition;
+}
+
+.badge {
+  @apply text-xs font-mono px-2 py-0.5 rounded-full border;
+}
