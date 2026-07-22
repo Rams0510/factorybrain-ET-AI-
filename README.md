@@ -1,9 +1,9 @@
-# FactoryBrain AI
+# 🏭 FactoryBrain AI
+### Unified Asset & Operations Brain for Oil & Gas Processing Plants
 
-**Industrial Knowledge Intelligence Platform** — upload maintenance
-reports, SOPs, safety manuals, P&ID drawings, inspection/audit reports and
-ask an AI assistant questions about your plant, grounded in your own
-documents via Retrieval-Augmented Generation (RAG).
+> **ET AI Hackathon 2026 Submission**
+
+FactoryBrain AI is a scalable Industrial Knowledge Intelligence Platform that unifies engineering knowledge across maintenance, operations, safety, and compliance. Leveraging **Knowledge Graphs**, **GraphRAG**, **Google Gemini**, and **Computer Vision**, it transforms disconnected plant documents into actionable intelligence, enabling faster decision-making, improved operational efficiency, and explainable AI assistance for industrial enterprises.
 
 > Wired to real cloud services — Firebase Authentication and Google
 > Gemini are required (not mocked). See **[Installation Guide](docs/INSTALLATION.md)**
